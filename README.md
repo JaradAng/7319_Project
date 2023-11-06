@@ -61,19 +61,37 @@ Follow the steps below to set up and run the project:
 ---
 ## Architecture decision
 
+- A traditional 3-tier architecture was considered as an alternative, structured with presentation, logic, and data tiers:
+
+  - The presentation tier would contain the dashboard and visualizations.
+  - The logic tier would handle components like the object detectors, classifiers, and analytics.
+  - The data tier would include databases like PostgreSQL and blob stores for video.
+  - Requests would flow sequentially through each tier. The presentation would send to logic, and logic would interact with data.
+  - Tight dependencies between tiers since processing relies on waterfall flow.
+  - Scaling by adding servers to each tier independently.
+  - Centralized data storage even for large video assets.
+
+- In contrast, the event-driven architecture has:
+
+  - Decoupled components that communicate asynchronously via events. 
+  - Parallel pipelines, with video frames streamed to analytics components.
+  - No direct links between the dashboard, detectors, and databases.
+  - Loose coupling allows scaling specific pieces like the DataProducer.
+  - Video stored distributed on disk while metadata goes to databases.
+  - Real-time processing versus batch windows.
+  
 For this video security application, an event-driven architecture fits best because:
 
 - Only analyze threats when they occur and only run models based on rules.
-- Video frames and detections need high-throughput streaming.
-- Loose coupling allows optimizing and hyperparamterizing of each analytics   component.
+- Video frames and detections need high-throughput streaming.  
+- Loose coupling allows optimizing and hyperparamterizing of each analytics component.
 - New analytics use cases can consume events easily.
 - Decoupling person and vehicles allows for easier updates to new models.
 - Central database limits scalability.
 - Latency needs to be low for video processing.
-- Decoupling with an event driven architecture allows for easily adding more  cameras and scaling based on location. 
+- Decoupling with an event driven architecture allows for easily adding more cameras and scaling based on location.
 
-
-An event-driven approach provides the right architectural style for this video security application because of its need for high throughput streaming, loose coupling between components, low latency, and scalability. The video frames and object detections generated need to be processed at high speeds and volumes. An event architecture promotes the decoupled, parallel flows critical for performance. Additionally, employing an event-driven approach allows optimizing each component independently without tight dependencies. New detection models and threat logic can be easily added by having them consume events as needed. Events also enable low latency by allowing components to react in real-time versus waiting on batch processing. Scaling horizontally across cameras and locations can be achieved by adding instances of components like DataProducer. The loose coupling and horizontal scalability are key benefits of using an event-driven architecture versus a 3 tiered architecture.
+- An event-driven approach provides the right architectural style for this video security application because of its need for high throughput streaming, loose coupling between components, low latency, and scalability. The video frames and object detections generated need to be processed at high speeds and volumes. An event architecture promotes the decoupled, parallel flows critical for performance. Additionally, employing an event-driven approach allows optimizing each component independently without tight dependencies. New detection models and threat logic can be easily added by having them consume events as needed. Events also enable low latency by allowing components to react in real-time versus waiting on batch processing. Scaling horizontally across cameras and locations can be achieved by adding instances of components like DataProducer. The loose coupling and horizontal scalability are key benefits of using an event-driven architecture versus a 3 tiered architecture.
 ---
 
 ---
