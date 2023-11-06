@@ -5,13 +5,9 @@
 1. [Overview](#overview)
 2. [Installation and Setup](#installation-and-setup)
 3. [Data Producer](#data-producer)
-4. [Event Bus](#event-bus)
-5. [Person and Vehicle Pipelines](#person-and-vehicle-pipelines)
-6. [Threat Analysis](#threat-analysis)
-7. [Dashboard](#dashboard)
-8. [Technologies Used](#technologies-used)
-9. [Installation and Setup](#installation-and-setup)
-10. [Future Enhancements](#future-enhancements)
+4. [Architecture decision](#Architecture-decision)
+5. [Changes to Proposed Architecture](#chages-to-proposed-architecture)
+6. [Future Enhancements](#future-enhancements)
 
 
 ---
