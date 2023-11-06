@@ -1,0 +1,11 @@
+input_video: DataProducer/input_media/changibag.mp4
+use: 1
+1:
+  - - 137
+    - 89
+    - 566
+    - 721
+  - - 669
+    - 80
+    - 1072
+    - 721
