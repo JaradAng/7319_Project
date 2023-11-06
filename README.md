@@ -74,7 +74,7 @@ Follow the steps below to set up and run the project:
 - In contrast, the event-driven architecture has:
 
   - Decoupled components that communicate asynchronously via events. 
-  - Parallel pipelines, with video frames streamed to analytics components.
+  - Parallel pipelines, with threat dataa streamed to analytics components.
   - No direct links between the dashboard, detectors, and databases.
   - Loose coupling allows scaling specific pieces like the DataProducer.
   - Video stored distributed on disk while metadata goes to databases.
