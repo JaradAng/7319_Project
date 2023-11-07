@@ -43,8 +43,9 @@ Follow the steps below to set up and run the project:
    ```
 
 4. **Add Your Video**:
-   - Place your `.mp4` video in the `input_media` directory.
    - Download video here: https://drive.google.com/file/d/1V5nkxMUJhwXdAwm1Pi9ll5h2PaTAfCqx/view?usp=sharing
+   - Place the `walk1.mp4` video in the `input_media` directory.
+  
 
 5. **Download the weights**:
    - The weights should downloand when ran if not download here: https://github.com/ultralytics/ultralytics
