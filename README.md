@@ -14,7 +14,7 @@
 
 ## Overview
 
-This application serves as a comprehensive smart home video security system. It is designed to consume and process video footage, track objects within the frame, analyze for threats, and display the analyzed data on a user-friendly dashboard. It it currently set up to run on CPU to run on most consumer PCs
+The Smart home security system performs real-time video analytics on footage from cameras or local storage with ability detect and track people and vehicles, publishing the object data to an event bus that routes it to separate pipelines for customized threat analysis of humans and vehicles. These analytics pipelines identify potential security risks like loitering and unusual activities, sending alerts and images crops to a web dashboard that allows homeowners to monitor emerging threats on their property through an intuitive, centralized interface. It it currently set up to run on CPU to run on most consumer PCs
 
 ---
 
@@ -44,6 +44,7 @@ Follow the steps below to set up and run the project:
 
 4. **Add Your Video**:
    - Place your `.mp4` video in the `input_media` directory.
+   - Download video here: https://drive.google.com/file/d/1V5nkxMUJhwXdAwm1Pi9ll5h2PaTAfCqx/view?usp=sharing
 
 5. **Download the weights**:
    - The weights should downloand when ran if not download here: https://github.com/ultralytics/ultralytics
@@ -56,7 +57,10 @@ Follow the steps below to set up and run the project:
    cd Main/MainProject
    python main.py
    ```
-
+8. **Stop the Project**:
+   ```bash
+   Cntrl + c 
+   ```
 
 ---
 ## Architecture decision
@@ -97,7 +101,8 @@ For this video security application, an event-driven architecture fits best beca
 ---
 
 ## Changes to Proposed Architecture
-- I changed the location of saving threat images to the local file system and not using a database for these reasons:
+
+I changed the location of saving threat images to the local file system and not using a database for these reasons:
       - When in actual use the video files are large raw streams, not structured data needed for queries.
       - Low latency access to the videos is needed for real-time processing. File system is better optimized for this.
       - Storing on disk allows easier sharing of the video storage across nodes if needed.
